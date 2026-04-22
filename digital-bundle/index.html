@@ -68,60 +68,48 @@ a { text-decoration: none; }
   width: 100%;
 }
 
-.badge {
-  display: inline-block;
-  border: 1.5px solid var(--gold);
-  color: var(--gold);
+.hero-eyebrow {
   font-family: 'Cinzel', serif;
-  font-size: 0.62rem;
+  font-size: clamp(0.78rem, 2vw, 0.95rem);
   font-weight: 700;
-  letter-spacing: 0.2em;
-  padding: 0.45em 1.3em;
-  border-radius: 999px;
-  text-transform: uppercase;
-  margin-bottom: 1.8rem;
-  background: rgba(8,11,24,0.55);
-  backdrop-filter: blur(4px);
-}
-
-.hero-sub {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(0.75rem, 2vw, 0.9rem);
   color: var(--gold);
-  letter-spacing: 0.22em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
 }
 
 .hero h1 {
   font-family: 'Cinzel', serif;
-  font-size: clamp(2.3rem, 8vw, 4.2rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.05;
-  letter-spacing: 0.03em;
+  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
   color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 1.6rem;
   text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+  max-width: 900px;
 }
 
 .hero h1 .gold { color: var(--gold); }
+.hero h1 .digital { color: var(--gold); font-style: italic; font-weight: 400; }
 
 .hero-hook {
   font-family: 'EB Garamond', serif;
   font-style: italic;
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  color: rgba(225,225,225,0.85);
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+  color: rgba(245,245,245,0.92);
   margin-bottom: 2.5rem;
   line-height: 1.5;
 }
 
-.hero-hook strong {
-  font-style: normal;
-  color: var(--gold);
-  font-family: 'Cinzel', serif;
-  font-size: 0.9em;
-  letter-spacing: 0.04em;
+.product-img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 2rem;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(250,197,28,0.12);
 }
 
 .price-row {
@@ -645,10 +633,11 @@ a { text-decoration: none; }
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <span class="badge">The End of an Era · 25% Off · Limited Time</span>
-    <p class="hero-sub">Imperial Age — Live Archive 2014–2023</p>
-    <h1>Live Digital<br><span class="gold">Bundle</span></h1>
-    <p class="hero-hook">5 Legendary Releases.<br><strong>25% Off Today. Gone Forever Tomorrow.</strong></p>
+    <p class="hero-eyebrow">The End of an Era</p>
+    <h1>Imperial Age: The Complete <span class="gold">Live Archive</span> 2014–2022 <span class="digital">(Digital)</span></h1>
+    <p class="hero-hook">5 Legendary Releases. 25% OFF Today. Gone Forever Tomorrow.</p>
+
+    <img class="product-img" src="product_digital_bundle.png" alt="Imperial Age Live Digital Bundle">
 
     <div class="price-row">
       <span class="price-main">£67.46</span>
