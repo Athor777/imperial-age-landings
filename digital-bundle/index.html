@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperial Age — Live Digital Bundle 2014–2023</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:    #080b18;
+  --bg-2:  #0e1122;
+  --gold:  #FAC51C;
+  --red:   #B8312F;
+  --text:  #E1E1E1;
+  --muted: #9a9ab0;
+  --dim:   #5a5a70;
+  --line:  #191926;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1.5rem 4rem;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('photo_orchestra.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  z-index: 0;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(8,11,24,0.55) 0%,
+    rgba(8,11,24,0.78) 55%,
+    rgba(8,11,24,1) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.45em 1.3em;
+  border-radius: 999px;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  background: rgba(8,11,24,0.55);
+  backdrop-filter: blur(4px);
+}
+
+.hero-sub {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  color: var(--gold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.3rem, 8vw, 4.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+}
+
+.hero h1 .gold { color: var(--gold); }
+
+.hero-hook {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: rgba(225,225,225,0.85);
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+}
+
+.hero-hook strong {
+  font-style: normal;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.9em;
+  letter-spacing: 0.04em;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.price-main {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.8rem, 8vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
+
+.price-old {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.28);
+  text-decoration: line-through;
+}
+
+.savings-line {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1.15rem 2.5rem;
+  border-radius: 4px;
+  transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(184,49,47,0.35);
+}
+
+.cta-btn:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 12px 40px rgba(184,49,47,0.5); }
+
+.fine-print {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.32);
+  letter-spacing: 0.04em;
+  font-family: sans-serif;
+  margin-top: 0.9rem;
+}
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 2.75rem 1.5rem;
+}
+
+.stats-inner {
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+
+.stat {
+  text-align: center;
+  flex: 1;
+  padding: 0 1rem;
+  border-right: 1px solid var(--line);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-number {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.7rem, 5.5vw, 2.8rem);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: clamp(0.78rem, 1.6vw, 0.95rem);
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ─── EXCLUSIVITY STRIP ─── */
+.excl-strip {
+  background: var(--bg);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.excl-strip .big {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.95rem, 2.6vw, 1.2rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto 1rem;
+}
+
+.excl-strip .sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.excl-strip .sub strong { color: var(--gold); font-style: normal; }
+
+/* ─── FULL-WIDTH PHOTO ─── */
+.fullwidth-photo {
+  width: 100%;
+  display: block;
+  height: clamp(260px, 50vw, 480px);
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+/* ─── SECTION UTILITY ─── */
+.section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  margin-bottom: 1.2rem;
+}
+
+.divider { border: none; border-top: 1px solid var(--line); }
+
+/* ─── STORY ─── */
+.story p {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 1.3rem;
+}
+
+.story p:last-child { margin-bottom: 0; }
+
+.story p.highlight {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  color: var(--text);
+  font-style: italic;
+}
+
+.story p.war {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  margin: 1.8rem 0;
+  text-align: center;
+}
+
+.note-box {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  margin: 1.5rem 0;
+  background: rgba(255,255,255,0.015);
+}
+
+.note-box p {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--dim);
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
+/* ─── BUNDLE ─── */
+.bundle-heading {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.release-row {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+}
+
+.release-row:last-child { border-bottom: none; }
+
+.release-cover {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(250,197,28,0.28);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.release-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.release-info { flex: 1; min-width: 0; }
+
+.release-name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.45rem;
+}
+
+.release-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.release-type {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--gold);
+}
+
+.bonus-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--gold);
+  border: 0.5px solid var(--gold);
+  border-radius: 100px;
+  padding: 2px 7px;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+}
+
+.release-desc {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.02rem;
+  font-style: italic;
+  color: #7a7060;
+  line-height: 1.75;
+}
+
+/* ─── CTA SECTION ─── */
+.cta-section {
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+}
+
+.cta-section h2 .gold { color: var(--gold); }
+
+.cta-section p.body {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.7;
+}
+
+.cta-section .price-main { color: var(--text); text-shadow: none; }
+
+/* ─── WHY NOW (photo BG) ─── */
+.why-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.why-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('photo_crowd.jpg');
+  background-size: cover;
+  background-position: center top;
+  z-index: 0;
+}
+
+.why-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(8,11,24,0.85) 0%,
+    rgba(8,11,24,0.82) 50%,
+    rgba(8,11,24,0.92) 100%);
+}
+
+.why-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem;
+}
+
+.why-inner h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.why-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 2.2rem;
+}
+
+.why-list li {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(225,225,225,0.85);
+  line-height: 1.65;
+}
+
+.why-list li .ico {
+  margin-right: 0.6rem;
+  font-size: 1.05em;
+}
+
+.why-close {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.why-cta-wrap {
+  text-align: center;
+}
+
+/* ─── FAQ ─── */
+.faq h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.faq-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item:last-child { border-bottom: none; }
+
+.faq-q {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+
+.faq-a {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ─── CLOSING ─── */
+.closing-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.closing-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('photo_cinematic.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.closing-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(8,11,24,0.55) 0%,
+    rgba(8,11,24,0.85) 55%,
+    rgba(8,11,24,1) 100%);
+}
+
+.closing-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5.5rem 1.5rem 6rem;
+  text-align: center;
+}
+
+.closing-quote {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.35rem, 4.5vw, 2.1rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+}
+
+.closing-sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 2.5rem;
+}
+
+.closing-sig {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-top: 2.5rem;
+  line-height: 1.8;
+}
+
+.closing-sig strong {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-style: normal;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--dim);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 520px) {
+  .stats-inner { gap: 0; }
+  .stat { padding: 0 0.6rem; }
+  .release-cover { width: 80px; height: 80px; min-width: 80px; }
+  .section { padding: 3rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="badge">The End of an Era · 25% Off · Limited Time</span>
+    <p class="hero-sub">Imperial Age — Live Archive 2014–2023</p>
+    <h1>Live Digital<br><span class="gold">Bundle</span></h1>
+    <p class="hero-hook">5 Legendary Releases.<br><strong>25% Off Today. Gone Forever Tomorrow.</strong></p>
+
+    <div class="price-row">
+      <span class="price-main">£67.46</span>
+      <span class="price-old">£89.94</span>
+    </div>
+    <p class="savings-line">You save £22.48 — 25% off</p>
+
+    <a href="https://imperial-age.com/digital-bundle/check-out?v=51518335&variant=a&" class="cta-btn">Get the Live Digital Bundle →</a>
+    <p class="fine-print">Instant digital download · DRM-free · Yours forever</p>
+  </div>
+</section>
+
+<!-- ═══════ STATS BAR ═══════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-number">200+</div>
+      <div class="stat-label">Shows across every<br>European country</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">51K</div>
+      <div class="stat-label">Viewers — Live on<br>Earth lockdown stream</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100K+</div>
+      <div class="stat-label">Viewers — Live<br>New World concert</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ EXCLUSIVITY STRIP ═══════ -->
+<div class="excl-strip">
+  <p class="big">Digital downloads only.<br>Not on Spotify. Not on Apple Music. Not on YouTube.<br>Not now. Not ever.</p>
+  <p class="sub">Warrior Race, Live in Wroclaw, Live on Earth and Live New World have been discontinued on CD and DVD <strong>forever</strong>. This might be your last chance to secure them — at least in digital.</p>
+</div>
+
+<!-- ═══════ ORCHESTRA PHOTO ═══════ -->
+<img class="fullwidth-photo" src="photo_orchestra.jpg" alt="Imperial Age with full orchestra">
+
+<!-- ═══════ STORY ═══════ -->
+<div class="section story">
+  <p class="section-label">The Story</p>
+  <p>In 2012, two childhood friends started a band in Moscow.</p>
+  <p class="highlight">By 2022, that band had played 200+ shows across every European country, streamed concerts to nearly 100,000 people during the global lockdown, and built something nobody thought possible — all from behind the Iron Curtain.</p>
+  <p class="war">Then the war started.</p>
+  <p>The two of us, Jane and Aor, left everything behind — our country, our band, our life — and started over in the UK with a completely new lineup.</p>
+  <p>That era — as a Russian band — ended in 2023. The original band stayed in Russia. We became a UK band with new members — Colin, Beardy, Daniel and Manuele.</p>
+  <p>A new chapter is already unfolding. New songs written. A new album crowdfunding launching in May. Big stages this summer — including Bloodstock main stage.</p>
+  <p class="highlight">This is our new era — as a UK band.</p>
+  <p>Which means the live albums from the previous decade have to be <em>archived</em>. Every physical CD and DVD is sold out. They will never be repressed again. Ever.</p>
+
+  <div class="note-box">
+    <p>Note: our studio albums — Turn the Sun Off, Legacy of Atlantis, New World — are staying available. This bundle is only about the live albums and Warrior Race.</p>
+  </div>
+
+  <p>But we couldn't let that entire live decade just disappear. So we've made one final archive.</p>
+</div>
+
+<!-- ═══════ LIVE PHOTO DIVIDER ═══════ -->
+<img class="fullwidth-photo" src="photo_singers.jpg" alt="Imperial Age performing live" style="object-position: center 40%;">
+
+<!-- ═══════ BUNDLE CONTENTS ═══════ -->
+<div class="section">
+  <p class="section-label">What's in the Bundle</p>
+  <p class="bundle-heading">5 Legendary Releases.</p>
+
+  <div class="release-row">
+    <div class="release-cover">
+      <img src="cover_wroclaw.webp" alt="Live in Wrocław">
+    </div>
+    <div class="release-info">
+      <div class="release-name-row">
+        <span class="release-name">Live in Wrocław</span>
+        <span class="release-type">Audio</span>
+      </div>
+      <p class="release-desc">Recorded on the 2018 Beloved Antichrist tour with Therion. 59 shows. 26 countries. This is the night we tore the roof off Poland.</p>
+    </div>
+  </div>
+
+  <div class="release-row">
+    <div class="release-cover">
+      <img src="cover_live_on_earth.webp" alt="Live on Earth">
+    </div>
+    <div class="release-info">
+      <div class="release-name-row">
+        <span class="release-name">Live on Earth</span>
+        <span class="release-type">Audio + Video</span>
+      </div>
+      <p class="release-desc">April 25, 2020. One of the first ever lockdown streaming concerts in metal. 51,000 viewers. The night the world found out who we were.</p>
+    </div>
+  </div>
+
+  <div class="release-row">
+    <div class="release-cover">
+      <img src="cover_live_new_world.webp" alt="Live New World">
+    </div>
+    <div class="release-info">
+      <div class="release-name-row">
+        <span class="release-name">Live New World</span>
+        <span class="release-type">Audio + Video</span>
+      </div>
+      <p class="release-desc">Boxing Day 2021, Moscow. Our biggest production yet. Full choir. Full orchestra. Nearly 100,000+ viewers worldwide. The final statement of the Russian era — we just didn't know it yet...</p>
+    </div>
+  </div>
+
+  <div class="release-row">
+    <div class="release-cover">
+      <img src="cover_warrior_race.webp" alt="Warrior Race">
+    </div>
+    <div class="release-info">
+      <div class="release-name-row">
+        <span class="release-name">Warrior Race</span>
+        <span class="release-type">2016 Version</span>
+      </div>
+      <p class="release-desc">The original cut. Discontinued on physical and on streaming.</p>
+    </div>
+  </div>
+
+  <div class="release-row">
+    <div class="release-cover">
+      <img src="cover_live_in_london.webp" alt="Live in London">
+    </div>
+    <div class="release-info">
+      <div class="release-name-row">
+        <span class="release-name">Live in London</span>
+        <span class="release-type">Audio + Video</span>
+        <span class="bonus-badge">BONUS</span>
+      </div>
+      <p class="release-desc">Bonus release included in the bundle. Physical is almost gone. When it's out, this digital version is the only way to ever hear it again.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════ MID CTA ═══════ -->
+<div class="section cta-section">
+  <h2>Live Digital Bundle 2014–2023<br><span class="gold">25% Off — Today Only</span></h2>
+  <p class="body">Everything above. Audio + video. Instant download. Yours forever.</p>
+  <div class="price-row">
+    <span class="price-main">£67.46</span>
+    <span class="price-old">£89.94</span>
+  </div>
+  <p class="savings-line" style="margin-bottom:1.8rem;">You save £22.48</p>
+  <a href="https://imperial-age.com/digital-bundle/check-out?v=51518335&variant=a&" class="cta-btn">Grab the Bundle Now →</a>
+  <p class="fine-print" style="color:var(--dim); margin-top:0.75rem;">Instant digital delivery · Secure checkout</p>
+</div>
+
+<!-- ═══════ WHY NOW (crowd photo BG) ═══════ -->
+<div class="why-section">
+  <div class="why-bg"></div>
+  <div class="why-inner">
+    <p class="section-label">Why Now</p>
+    <h2>These live releases are not coming back.</h2>
+    <ul class="why-list">
+      <li><span class="ico">❌</span> Not on Spotify. Not now, not ever. (A few singles, maybe. Never the full concerts.)</li>
+      <li><span class="ico">❌</span> Not on Apple Music. Same.</li>
+      <li><span class="ico">❌</span> Not on YouTube in full quality. The uploads that exist are cut, compressed, incomplete.</li>
+      <li><span class="ico">❌</span> Not on CD/DVD. Sold out. Discontinued. No repress.</li>
+      <li><span class="ico">⏳</span> Not on our webshop forever. When the new era fully launches, the archive closes. No warning. No second chance.</li>
+    </ul>
+    <p class="why-close">This is the only window.<br>This is the only bundle. 25% off. One time.</p>
+    <div class="why-cta-wrap">
+      <a href="https://imperial-age.com/digital-bundle/check-out?v=51518335&variant=a&" class="cta-btn" style="max-width:420px;">I Want the Bundle →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ FAQ ═══════ -->
+<div class="section faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <p class="faq-q">When will they be removed from the store?</p>
+    <p class="faq-a">When we say so. We're launching a new album crowdfunding in May and a full new era this year. When that fully arrives, the archive closes. No warning. No second chance.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Does this include the studio albums too?</p>
+    <p class="faq-a">No. Turn the Sun Off, Legacy of Atlantis and New World remain available as normal. This bundle is specifically about the live releases 2014–2023 plus the original 2016 Warrior Race.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Will these live albums ever come back on physical?</p>
+    <p class="faq-a">No. Every physical version is discontinued. Live in London is the only one still partially available and will not be repressed.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Will the full concerts ever go on Spotify / Apple / YouTube?</p>
+    <p class="faq-a">No. A few individual songs may appear. The full concerts, the full videos, the full archive — never.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">What format are the downloads?</p>
+    <p class="faq-a">High-quality audio (MP3 + lossless). Full HD video. DRM-free. Download them, back them up, keep them forever.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">What if I already own some of these?</p>
+    <p class="faq-a">The bundle still saves you money vs buying the remaining ones separately. And you lock in the full live archive in one place.</p>
+  </div>
+</div>
+
+<!-- ═══════ CLOSING (cinematic BG) ═══════ -->
+<div class="closing-section">
+  <div class="closing-bg"></div>
+  <div class="closing-inner">
+    <p class="closing-quote">This is the last door<br>to the Russian Era of Imperial Age.</p>
+    <p class="closing-sub">When it closes, it closes.</p>
+    <a href="https://imperial-age.com/digital-bundle/check-out?v=51518335&variant=a&" class="cta-btn" style="max-width:460px;">Get the Bundle — 25% Off →</a>
+    <p class="fine-print" style="color:rgba(255,255,255,0.3); margin-top:0.9rem;">Instant digital delivery · DRM-free · Secure checkout</p>
+    <p class="closing-sig">
+      Because it's time for new heights.<br>
+      <em>Aor &amp; Jane</em>
+      <strong>Imperial Age</strong>
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
